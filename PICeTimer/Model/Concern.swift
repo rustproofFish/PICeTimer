@@ -13,14 +13,14 @@ final class Concern: Identifiable {
     var id: String
     var reference: String
     var parties: String
-    var dateAssessed: Date
+    var date: Date
     var time: TimeInterval
     
     init(reference: String, parties: String, dateAssessd: Date, time: TimeInterval) {
         self.id = UUID().uuidString
         self.reference = reference
         self.parties = parties
-        self.dateAssessed = dateAssessd
+        self.date = dateAssessd
         self.time = time
     }
 }

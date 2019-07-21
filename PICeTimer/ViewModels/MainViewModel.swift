@@ -24,26 +24,35 @@ protocol UnidirectionalDataType {
 
 final class MainViewModel: BindableObject {
     // MARK:- Dependency injection
-    typealias Dependencies = TimerService
+    typealias Dependencies = HasTimerService & HasConcernAPIService
+    let dependencies: Dependencies
     
     // MARK:- Protool conformance
     var willChange = PassthroughSubject<Void, Never>()
     
     class Input {
+        var concerns: [Concern]
         
+        init(concerns: [Concern]) {
+            self.concerns = concerns
+        }
     }
-    var input = Input()
+    var input: Input!
     
     struct Output {
-        
+        var concerns = [Concern]()
     }
-    var output = Output()
+    var output: Output!
     
-    func setupBindings() { }
+    func setupBindings() {
+        output.concerns = input.concerns
+    }
     
     // MARK:- Lifecycle
-    init() {
-        
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+        input = Input(concerns: dependencies.apiService.concerns)
+        output = Output(concerns: input.concerns)
     }
 
 }

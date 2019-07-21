@@ -13,25 +13,17 @@
 		CE94635122E50C5C002EB5C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE94635022E50C5C002EB5C7 /* Assets.xcassets */; };
 		CE94635422E50C5C002EB5C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE94635322E50C5C002EB5C7 /* Preview Assets.xcassets */; };
 		CE94635722E50C5C002EB5C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE94635522E50C5C002EB5C7 /* LaunchScreen.storyboard */; };
-		CE94636222E50C5C002EB5C7 /* PICeTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94636122E50C5C002EB5C7 /* PICeTimerTests.swift */; };
-		CE94636D22E50C5C002EB5C7 /* PICeTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94636C22E50C5C002EB5C7 /* PICeTimerUITests.swift */; };
 		CE94637B22E50CF7002EB5C7 /* Concern.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94637A22E50CF7002EB5C7 /* Concern.swift */; };
 		CE94637F22E50F2C002EB5C7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94637E22E50F2C002EB5C7 /* Utilities.swift */; };
 		CE94638222E50F54002EB5C7 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94638122E50F54002EB5C7 /* TimerService.swift */; };
 		CE94638522E51023002EB5C7 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94638422E51023002EB5C7 /* MainViewModel.swift */; };
 		CE94638822E5110D002EB5C7 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94638722E5110D002EB5C7 /* AppDependencies.swift */; };
 		CE94638A22E51186002EB5C7 /* ConcernAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94638922E51186002EB5C7 /* ConcernAPIService.swift */; };
+		CE94639422E52237002EB5C7 /* ConcernAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94639322E52237002EB5C7 /* ConcernAPITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CE94635E22E50C5C002EB5C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE94633F22E50C5A002EB5C7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE94634622E50C5A002EB5C7;
-			remoteInfo = PICeTimer;
-		};
-		CE94636922E50C5C002EB5C7 /* PBXContainerItemProxy */ = {
+		CE94639622E52237002EB5C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CE94633F22E50C5A002EB5C7 /* Project object */;
 			proxyType = 1;
@@ -49,18 +41,15 @@
 		CE94635322E50C5C002EB5C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE94635622E50C5C002EB5C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE94635822E50C5C002EB5C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE94635D22E50C5C002EB5C7 /* PICeTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PICeTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE94636122E50C5C002EB5C7 /* PICeTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PICeTimerTests.swift; sourceTree = "<group>"; };
-		CE94636322E50C5C002EB5C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE94636822E50C5C002EB5C7 /* PICeTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PICeTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE94636C22E50C5C002EB5C7 /* PICeTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PICeTimerUITests.swift; sourceTree = "<group>"; };
-		CE94636E22E50C5C002EB5C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE94637A22E50CF7002EB5C7 /* Concern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concern.swift; sourceTree = "<group>"; };
 		CE94637E22E50F2C002EB5C7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CE94638122E50F54002EB5C7 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 		CE94638422E51023002EB5C7 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CE94638722E5110D002EB5C7 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		CE94638922E51186002EB5C7 /* ConcernAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcernAPIService.swift; sourceTree = "<group>"; };
+		CE94639122E52237002EB5C7 /* PICeTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PICeTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE94639322E52237002EB5C7 /* ConcernAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcernAPITests.swift; sourceTree = "<group>"; };
+		CE94639522E52237002EB5C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,14 +60,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE94635A22E50C5C002EB5C7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE94636522E50C5C002EB5C7 /* Frameworks */ = {
+		CE94638E22E52237002EB5C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -92,8 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				CE94634922E50C5A002EB5C7 /* PICeTimer */,
-				CE94636022E50C5C002EB5C7 /* PICeTimerTests */,
-				CE94636B22E50C5C002EB5C7 /* PICeTimerUITests */,
+				CE94639222E52237002EB5C7 /* PICeTimerTests */,
 				CE94634822E50C5A002EB5C7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,8 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				CE94634722E50C5A002EB5C7 /* PICeTimer.app */,
-				CE94635D22E50C5C002EB5C7 /* PICeTimerTests.xctest */,
-				CE94636822E50C5C002EB5C7 /* PICeTimerUITests.xctest */,
+				CE94639122E52237002EB5C7 /* PICeTimerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,24 +112,6 @@
 				CE94635322E50C5C002EB5C7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		CE94636022E50C5C002EB5C7 /* PICeTimerTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE94636122E50C5C002EB5C7 /* PICeTimerTests.swift */,
-				CE94636322E50C5C002EB5C7 /* Info.plist */,
-			);
-			path = PICeTimerTests;
-			sourceTree = "<group>";
-		};
-		CE94636B22E50C5C002EB5C7 /* PICeTimerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CE94636C22E50C5C002EB5C7 /* PICeTimerUITests.swift */,
-				CE94636E22E50C5C002EB5C7 /* Info.plist */,
-			);
-			path = PICeTimerUITests;
 			sourceTree = "<group>";
 		};
 		CE94637C22E50ECC002EB5C7 /* Model */ = {
@@ -194,6 +156,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		CE94639222E52237002EB5C7 /* PICeTimerTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE94639322E52237002EB5C7 /* ConcernAPITests.swift */,
+				CE94639522E52237002EB5C7 /* Info.plist */,
+			);
+			path = PICeTimerTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,41 +185,23 @@
 			productReference = CE94634722E50C5A002EB5C7 /* PICeTimer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CE94635C22E50C5C002EB5C7 /* PICeTimerTests */ = {
+		CE94639022E52237002EB5C7 /* PICeTimerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE94637422E50C5C002EB5C7 /* Build configuration list for PBXNativeTarget "PICeTimerTests" */;
+			buildConfigurationList = CE94639822E52237002EB5C7 /* Build configuration list for PBXNativeTarget "PICeTimerTests" */;
 			buildPhases = (
-				CE94635922E50C5C002EB5C7 /* Sources */,
-				CE94635A22E50C5C002EB5C7 /* Frameworks */,
-				CE94635B22E50C5C002EB5C7 /* Resources */,
+				CE94638D22E52237002EB5C7 /* Sources */,
+				CE94638E22E52237002EB5C7 /* Frameworks */,
+				CE94638F22E52237002EB5C7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CE94635F22E50C5C002EB5C7 /* PBXTargetDependency */,
+				CE94639722E52237002EB5C7 /* PBXTargetDependency */,
 			);
 			name = PICeTimerTests;
 			productName = PICeTimerTests;
-			productReference = CE94635D22E50C5C002EB5C7 /* PICeTimerTests.xctest */;
+			productReference = CE94639122E52237002EB5C7 /* PICeTimerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		CE94636722E50C5C002EB5C7 /* PICeTimerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE94637722E50C5C002EB5C7 /* Build configuration list for PBXNativeTarget "PICeTimerUITests" */;
-			buildPhases = (
-				CE94636422E50C5C002EB5C7 /* Sources */,
-				CE94636522E50C5C002EB5C7 /* Frameworks */,
-				CE94636622E50C5C002EB5C7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CE94636A22E50C5C002EB5C7 /* PBXTargetDependency */,
-			);
-			name = PICeTimerUITests;
-			productName = PICeTimerUITests;
-			productReference = CE94636822E50C5C002EB5C7 /* PICeTimerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -263,11 +216,7 @@
 					CE94634622E50C5A002EB5C7 = {
 						CreatedOnToolsVersion = 11.0;
 					};
-					CE94635C22E50C5C002EB5C7 = {
-						CreatedOnToolsVersion = 11.0;
-						TestTargetID = CE94634622E50C5A002EB5C7;
-					};
-					CE94636722E50C5C002EB5C7 = {
+					CE94639022E52237002EB5C7 = {
 						CreatedOnToolsVersion = 11.0;
 						TestTargetID = CE94634622E50C5A002EB5C7;
 					};
@@ -287,8 +236,7 @@
 			projectRoot = "";
 			targets = (
 				CE94634622E50C5A002EB5C7 /* PICeTimer */,
-				CE94635C22E50C5C002EB5C7 /* PICeTimerTests */,
-				CE94636722E50C5C002EB5C7 /* PICeTimerUITests */,
+				CE94639022E52237002EB5C7 /* PICeTimerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -304,14 +252,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE94635B22E50C5C002EB5C7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE94636622E50C5C002EB5C7 /* Resources */ = {
+		CE94638F22E52237002EB5C7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -337,34 +278,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE94635922E50C5C002EB5C7 /* Sources */ = {
+		CE94638D22E52237002EB5C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE94636222E50C5C002EB5C7 /* PICeTimerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE94636422E50C5C002EB5C7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE94636D22E50C5C002EB5C7 /* PICeTimerUITests.swift in Sources */,
+				CE94639422E52237002EB5C7 /* ConcernAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CE94635F22E50C5C002EB5C7 /* PBXTargetDependency */ = {
+		CE94639722E52237002EB5C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CE94634622E50C5A002EB5C7 /* PICeTimer */;
-			targetProxy = CE94635E22E50C5C002EB5C7 /* PBXContainerItemProxy */;
-		};
-		CE94636A22E50C5C002EB5C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE94634622E50C5A002EB5C7 /* PICeTimer */;
-			targetProxy = CE94636922E50C5C002EB5C7 /* PBXContainerItemProxy */;
+			targetProxy = CE94639622E52237002EB5C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -534,10 +462,9 @@
 			};
 			name = Release;
 		};
-		CE94637522E50C5C002EB5C7 /* Debug */ = {
+		CE94639922E52237002EB5C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LRB59KU97;
@@ -555,10 +482,9 @@
 			};
 			name = Debug;
 		};
-		CE94637622E50C5C002EB5C7 /* Release */ = {
+		CE94639A22E52237002EB5C7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LRB59KU97;
@@ -573,46 +499,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PICeTimer.app/PICeTimer";
-			};
-			name = Release;
-		};
-		CE94637822E50C5C002EB5C7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3LRB59KU97;
-				INFOPLIST_FILE = PICeTimerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.awardvetsci.PICeTimerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PICeTimer;
-			};
-			name = Debug;
-		};
-		CE94637922E50C5C002EB5C7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3LRB59KU97;
-				INFOPLIST_FILE = PICeTimerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.awardvetsci.PICeTimerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PICeTimer;
 			};
 			name = Release;
 		};
@@ -637,20 +523,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE94637422E50C5C002EB5C7 /* Build configuration list for PBXNativeTarget "PICeTimerTests" */ = {
+		CE94639822E52237002EB5C7 /* Build configuration list for PBXNativeTarget "PICeTimerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE94637522E50C5C002EB5C7 /* Debug */,
-				CE94637622E50C5C002EB5C7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE94637722E50C5C002EB5C7 /* Build configuration list for PBXNativeTarget "PICeTimerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE94637822E50C5C002EB5C7 /* Debug */,
-				CE94637922E50C5C002EB5C7 /* Release */,
+				CE94639922E52237002EB5C7 /* Debug */,
+				CE94639A22E52237002EB5C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
