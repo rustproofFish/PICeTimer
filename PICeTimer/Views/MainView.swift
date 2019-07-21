@@ -8,7 +8,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
+    @ObjectBinding var viewModel: MainViewModel
+    
     var body: some View {
         Text("Hello World")
     }
@@ -16,8 +18,10 @@ struct ContentView: View {
 
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
+    static let viewModel = MainViewModel()
+    
     static var previews: some View {
-        ContentView()
+        MainView(viewModel: viewModel)
     }
 }
 #endif
