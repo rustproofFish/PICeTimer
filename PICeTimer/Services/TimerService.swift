@@ -40,6 +40,9 @@ final class TimerService {
         }
         timer?.cancel()
         #warning("If the case is new, reset the timer otherwise increment")
+        #warning("Think actually the timer should just emit 'ticks' and not worry about elapsed time, etc")
+        // MARK:- When timer ends, actual time on case should be derived from differences in dates to be accurate
+        // MARK:- THis class is just driving the UI really...
         timer = nil
         cancellables.removeAll()
     }

@@ -30,22 +30,39 @@ final class MainViewModel: BindableObject {
     // MARK:- Protool conformance
     var willChange = PassthroughSubject<Void, Never>()
     
+    // MARK:- Private properties
+    private var cancellables = [Cancellable]() // store refs to ensure all cancelled on deinit
+    
+    // MARK:- Have to use internal class as @Published crashes inside structs
     class Input {
         var concerns: [Concern]
+        @Published var isTimerRunning: Bool {
+            didSet { print("isTimerRunning \(isTimerRunning)")}
+        }
         
         init(concerns: [Concern]) {
             self.concerns = concerns
+            self.isTimerRunning = false
         }
     }
     var input: Input!
     
     struct Output {
         var concerns = [Concern]()
+        var isTimerRunning = false { didSet { print("Output \(isTimerRunning)") } }
+        var isButtonDisabled = false
     }
-    var output: Output!
+    var output = Output() {
+        willSet { willChange.send() }
+    }
     
     func setupBindings() {
         output.concerns = input.concerns
+        
+        let timerCancellable = input.$isTimerRunning
+            .assign(to: \.output.isTimerRunning, on: self)
+        
+        cancellables.append(timerCancellable)
     }
     
     // MARK:- Lifecycle
@@ -53,6 +70,8 @@ final class MainViewModel: BindableObject {
         self.dependencies = dependencies
         input = Input(concerns: dependencies.apiService.concerns)
         output = Output(concerns: input.concerns)
+        
+        setupBindings()
     }
 
 }

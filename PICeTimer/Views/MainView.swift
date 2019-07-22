@@ -8,8 +8,40 @@
 
 import SwiftUI
 
+
 struct MainView: View {
     @ObjectBinding var viewModel: MainViewModel
+    
+    private enum ButtonState {
+        case start, stop, disabled
+        
+        private var colour: Color {
+            switch self {
+            case .start: return .green
+            case .stop: return .red
+            case .disabled: return .gray
+            }
+        }
+        
+        private var image: Image {
+            switch self {
+            case .start, .disabled: return Image(systemName: "play")
+            case .stop: return Image(systemName: "stop")
+            }
+        }
+        
+        var view: some View {
+            return image.foregroundColor(colour)
+        }
+        
+        init?(isTimerRunning: Bool, isButtonDisabled: Bool) {
+            if isButtonDisabled {
+                self = .disabled
+            } else {
+                self = isTimerRunning ? .stop : .start
+            }
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -21,9 +53,10 @@ struct MainView: View {
                         .padding(.leading, 16)
                     Spacer()
                     Text("00:00:00")
-                    Button(action: { }) {
-                        Image(systemName: "play")
+                    Button(action: { self.viewModel.input.isTimerRunning.toggle() }) {
+                        ButtonState(isTimerRunning: viewModel.output.isTimerRunning, isButtonDisabled: viewModel.output.isButtonDisabled)?.view
                     }
+                        .disabled(viewModel.output.isButtonDisabled)
                         .padding([.leading, .trailing], 16)
                 }
                     .font(.largeTitle)
@@ -65,3 +98,4 @@ struct MainView: View {
         }
     }
 #endif
+
