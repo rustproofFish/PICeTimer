@@ -20,7 +20,6 @@
 		CE94638822E5110D002EB5C7 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94638722E5110D002EB5C7 /* AppDependencies.swift */; };
 		CE94638A22E51186002EB5C7 /* ConcernAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94638922E51186002EB5C7 /* ConcernAPIService.swift */; };
 		CE94639422E52237002EB5C7 /* ConcernAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94639322E52237002EB5C7 /* ConcernAPITests.swift */; };
-		CEB1841322E6424B00238A46 /* TimerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB1841222E6424B00238A46 /* TimerButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +50,6 @@
 		CE94639122E52237002EB5C7 /* PICeTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PICeTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE94639322E52237002EB5C7 /* ConcernAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcernAPITests.swift; sourceTree = "<group>"; };
 		CE94639522E52237002EB5C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEB1841222E6424B00238A46 /* TimerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimerButtonView.swift; path = "../../../../../../../../../../System/Volumes/Data/Users/adrianward/Library/CloudStorage/iCloud Drive/Documents/Xcode Projects/PICeTimer/PICeTimer/Views/TimerButtonView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				CE94634E22E50C5A002EB5C7 /* MainView.swift */,
-				CEB1841222E6424B00238A46 /* TimerButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,7 +268,6 @@
 			files = (
 				CE94638A22E51186002EB5C7 /* ConcernAPIService.swift in Sources */,
 				CE94638822E5110D002EB5C7 /* AppDependencies.swift in Sources */,
-				CEB1841322E6424B00238A46 /* TimerButtonView.swift in Sources */,
 				CE94638522E51023002EB5C7 /* MainViewModel.swift in Sources */,
 				CE94637B22E50CF7002EB5C7 /* Concern.swift in Sources */,
 				CE94634B22E50C5A002EB5C7 /* AppDelegate.swift in Sources */,

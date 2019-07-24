@@ -12,52 +12,23 @@ import SwiftUI
 struct MainView: View {
     @ObjectBinding var viewModel: MainViewModel
     
-    private enum ButtonState {
-        case start, stop, disabled
-        
-        private var colour: Color {
-            switch self {
-            case .start: return .green
-            case .stop: return .red
-            case .disabled: return .gray
-            }
-        }
-        
-        private var image: Image {
-            switch self {
-            case .start, .disabled: return Image(systemName: "play")
-            case .stop: return Image(systemName: "stop")
-            }
-        }
-        
-        var view: some View {
-            return image.foregroundColor(colour)
-        }
-        
-        init?(isTimerRunning: Bool, isButtonDisabled: Bool) {
-            if isButtonDisabled {
-                self = .disabled
-            } else {
-                self = isTimerRunning ? .stop : .start
-            }
-        }
-    }
-    
     var body: some View {
         NavigationView {
             VStack {
                 
                 HStack {
-                    Text("Case details")
-                        .fontWeight(.light)
+                    TextField("Concern details", text: $viewModel.input.concernSearchString)
+                        .disabled(viewModel.output.isConcernSearchFieldDisabled)
                         .padding(.leading, 16)
-                    Spacer()
-                    Text("00:00:00")
-                    Button(action: { self.viewModel.input.isTimerRunning.toggle() }) {
-                        ButtonState(isTimerRunning: viewModel.output.isTimerRunning, isButtonDisabled: viewModel.output.isButtonDisabled)?.view
+                    
+                    Text(viewModel.output.elapsedTime)
+                    Button(action: {
+                        self.viewModel.input.isTimerRunning.toggle() })
+                    {
+                        StatefulButtonUI(isTimerRunning: viewModel.output.isTimerRunning, isButtonDisabled: viewModel.output.isTimerButtonDisabled)?.view
                     }
-                        .disabled(viewModel.output.isButtonDisabled)
-                        .padding([.leading, .trailing], 16)
+                        .disabled(viewModel.output.isTimerButtonDisabled)
+                        .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 16))
                 }
                     .font(.largeTitle)
                         .padding(.vertical, 32)
@@ -99,3 +70,35 @@ struct MainView: View {
     }
 #endif
 
+extension MainView {
+    private enum StatefulButtonUI {
+            case start, stop, disabled
+            
+            private var colour: Color {
+                switch self {
+                case .start: return .green
+                case .stop: return .red
+                case .disabled: return .gray
+                }
+            }
+            
+            private var image: Image {
+                switch self {
+                case .start, .disabled: return Image(systemName: "play")
+                case .stop: return Image(systemName: "stop")
+                }
+            }
+            
+            var view: some View {
+                return image.foregroundColor(colour)
+            }
+            
+            init?(isTimerRunning: Bool, isButtonDisabled: Bool) {
+                if isButtonDisabled {
+                    self = .disabled
+                } else {
+                    self = isTimerRunning ? .stop : .start
+                }
+            }
+        }
+}
