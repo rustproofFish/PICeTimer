@@ -8,9 +8,13 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
-final class Concern: Identifiable {
-    var id: String
+struct Concern: Identifiable {
+    // MARK:- Protocol conformance
+    let id: String
+    
+    // MARK:- Properties
     var reference: String
     var parties: String
     var date: Date
