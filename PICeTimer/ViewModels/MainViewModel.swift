@@ -2,7 +2,7 @@
 //  MainViewModel.swift
 //  PICeTimer
 //
-//  Created by Adrian Ward on 21/07/2019.
+//  Created by Adrian Ward on 01/08/2019.
 //  Copyright © 2019 Adrian Ward. All rights reserved.
 //
 
@@ -10,105 +10,72 @@ import Foundation
 import SwiftUI
 import Combine
 
+
 protocol UnidirectionalDataType {
+    // TODO:- Is there a way of hiding some of the implementation details here?
     associatedtype Input
     associatedtype Output
     
     var input: Input { get }
     var output: Output { get }
+    var cancellables: [Cancellable] { get }
     
     func setupBindings()
 }
 
-
-
-final class MainViewModel: BindableObject {
-    // MARK:- Dependency injection
-    typealias Dependencies = HasTimerService & HasConcernAPIService
-    let dependencies: Dependencies
-    
-    // MARK:- Private properties
-    private var cancellables = [Cancellable]() // store refs to ensure all cancelled on deinit
-    
-    // MARK:- Protool conformance
-    var willChange = PassthroughSubject<Void, Never>()
-    
-    class Input { // Have to use internal class as @Published currently crashes inside structs
-        var concerns: [Concern]
-        @Published var isTimerRunning: Bool
-        @Published var elapsedTime: TimeInterval { didSet { print("\(elapsedTime) secs") } }
-        @Published var concernSearchString: String { didSet { print("case: \(concernSearchString)")}} // TODO: Rename as not clear
-        @Published var selectedConcern: Concern? { didSet { print("Selected: \(String(describing: selectedConcern))") } }
-        
-        init(concerns: [Concern]) {
-            self.concerns = concerns
-            self.isTimerRunning = false
-            self.elapsedTime = 0.0
-            self.concernSearchString = "" // clumsy! better name needed
-            self.selectedConcern = nil
-        }
+extension UnidirectionalDataType {
+    func setupBindings() {
+        fatalError("Must be implemented")
     }
-    var input: Input!
+}
+
+
+final class MainViewModel: UnidirectionalDataType, ObservableObject {
+    // MARK:- Properties
+    private let timerService: TimerService
+    private let apiService: ConcernAPIService
+    
+    // MARK:- Protocol conformance
+    /// ObservableObject
+    let objectWillChange = PassthroughSubject<Void, Never>()
+    
+    /// UnidirectionalDataType
+    struct Input {
+        @Published var isTimerRunning = false
+    }
     
     struct Output {
-        var concerns = [Concern]()
-        var isTimerRunning = false { didSet { print("Output \(isTimerRunning)") } }
-        var isTimerButtonDisabled = false
-        var isConcernSearchFieldDisabled = false
-        var elapsedTime = ""
+        var time: String = ""
     }
-    var output = Output() {
-        willSet { willChange.send() }
+    
+    var input: Input
+    var output: Output {
+        willSet { objectWillChange.send() }
     }
+    var cancellables = [Cancellable]()
     
     func setupBindings() {
-        // Bind services
-        let elapsedTimeCancellable = dependencies.timerService.elapsedTimeSubject
-            .assign(to: \.input.elapsedTime, on: self)
-        
-        // Bind input to output properites
-        output.concerns = input.concerns
-        
-        let elapsedTimeUIUpdateCancellable = input.$elapsedTime
-            .map { value in Utilities.formattedStringFrom(time: value) }
-            .assign(to: \.output.elapsedTime, on: self)
-        
-        let timerButtonUIUpdateCancellable = input.$isTimerRunning
-            .assign(to: \.output.isTimerRunning, on: self)
-        
-        let timerButtonDisabledCancellable = input.$concernSearchString
-            .map { $0.isEmpty }
-            .assign(to: \.output.isTimerButtonDisabled, on: self)
-        
-        let timerServiceToggleCancellable = input.$isTimerRunning
+        let timerToggleStream = input.$isTimerRunning
             .sink { state in
-                switch state {
-                case true:
-                    #warning("Create a new case or utilise the one selectedd by the user")
-                    self.output.isConcernSearchFieldDisabled = true
-                    self.dependencies.timerService.start()
-                case false:
-                    self.output.isConcernSearchFieldDisabled = false
-                    self.dependencies.timerService.stop()
-                    // TODO - persist the concern (update existing or create a new one)
-                }
-
+                if state { self.timerService.start() } else { self.timerService.stop() }
         }
         
-        cancellables += [elapsedTimeCancellable,
-                         elapsedTimeUIUpdateCancellable,
-                         timerButtonUIUpdateCancellable,
-                         timerButtonDisabledCancellable,
-                         timerServiceToggleCancellable]
+        let elapsedTimeStream = timerService.elapsedTimeSubject
+            .map { Utilities.formattedStringFrom(time: $0) }
+            .assign(to: \.output.time, on: self)
+        
+        cancellables += [timerToggleStream, elapsedTimeStream]
     }
     
+    
     // MARK:- Lifecycle
-    init(dependencies: Dependencies) {
-        self.dependencies = dependencies
-        input = Input(concerns: dependencies.apiService.concerns)
-        output = Output(concerns: input.concerns)
+    init(timerService: TimerService, apiService: ConcernAPIService) {
+        self.timerService = timerService
+        self.apiService = apiService
         
+        input = Input()
+        output = Output()
         setupBindings()
     }
-
+    
 }

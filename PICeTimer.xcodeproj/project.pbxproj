@@ -16,11 +16,12 @@
 		CE94637B22E50CF7002EB5C7 /* Concern.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94637A22E50CF7002EB5C7 /* Concern.swift */; };
 		CE94637F22E50F2C002EB5C7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94637E22E50F2C002EB5C7 /* Utilities.swift */; };
 		CE94638222E50F54002EB5C7 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94638122E50F54002EB5C7 /* TimerService.swift */; };
-		CE94638522E51023002EB5C7 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94638422E51023002EB5C7 /* MainViewModel.swift */; };
 		CE94638822E5110D002EB5C7 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94638722E5110D002EB5C7 /* AppDependencies.swift */; };
 		CE94638A22E51186002EB5C7 /* ConcernAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94638922E51186002EB5C7 /* ConcernAPIService.swift */; };
 		CE94639422E52237002EB5C7 /* ConcernAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94639322E52237002EB5C7 /* ConcernAPITests.swift */; };
-		CEECB6BB22EA42FF00D598E3 /* ConcernDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECB6BA22EA42FF00D598E3 /* ConcernDetailView.swift */; };
+		CED88DA622F33D6D0094D9C1 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED88DA522F33D6D0094D9C1 /* MainViewModel.swift */; };
+		CED88DAA22F33F1F0094D9C1 /* ConcernRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED88DA922F33F1F0094D9C1 /* ConcernRow.swift */; };
+		CED88DAC22F340E40094D9C1 /* ConcernRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED88DAB22F340E40094D9C1 /* ConcernRowViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,13 +46,14 @@
 		CE94637A22E50CF7002EB5C7 /* Concern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concern.swift; sourceTree = "<group>"; };
 		CE94637E22E50F2C002EB5C7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CE94638122E50F54002EB5C7 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
-		CE94638422E51023002EB5C7 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CE94638722E5110D002EB5C7 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		CE94638922E51186002EB5C7 /* ConcernAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcernAPIService.swift; sourceTree = "<group>"; };
 		CE94639122E52237002EB5C7 /* PICeTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PICeTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE94639322E52237002EB5C7 /* ConcernAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcernAPITests.swift; sourceTree = "<group>"; };
 		CE94639522E52237002EB5C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEECB6BA22EA42FF00D598E3 /* ConcernDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConcernDetailView.swift; path = "../../../../../../../System/Volumes/Data/Users/adrianward/OneDrive/Xcode Projects/PICeTimer/PICeTimer/Views/ConcernDetailView.swift"; sourceTree = "<group>"; };
+		CED88DA522F33D6D0094D9C1 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		CED88DA922F33F1F0094D9C1 /* ConcernRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcernRow.swift; sourceTree = "<group>"; };
+		CED88DAB22F340E40094D9C1 /* ConcernRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcernRowViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +99,9 @@
 				CE94634C22E50C5A002EB5C7 /* SceneDelegate.swift */,
 				CE94638322E50F64002EB5C7 /* Library */,
 				CE94638022E50F46002EB5C7 /* Services */,
+				CE94637C22E50ECC002EB5C7 /* Model */,
 				CE94637D22E50F03002EB5C7 /* Views */,
 				CE94638622E51027002EB5C7 /* ViewModels */,
-				CE94637C22E50ECC002EB5C7 /* Model */,
 				CE94635022E50C5C002EB5C7 /* Assets.xcassets */,
 				CE94635522E50C5C002EB5C7 /* LaunchScreen.storyboard */,
 				CE94635822E50C5C002EB5C7 /* Info.plist */,
@@ -128,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				CE94634E22E50C5A002EB5C7 /* MainView.swift */,
-				CEECB6BA22EA42FF00D598E3 /* ConcernDetailView.swift */,
+				CED88DA922F33F1F0094D9C1 /* ConcernRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,7 +156,8 @@
 		CE94638622E51027002EB5C7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				CE94638422E51023002EB5C7 /* MainViewModel.swift */,
+				CED88DA522F33D6D0094D9C1 /* MainViewModel.swift */,
+				CED88DAB22F340E40094D9C1 /* ConcernRowViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -269,16 +272,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED88DAC22F340E40094D9C1 /* ConcernRowViewModel.swift in Sources */,
 				CE94638A22E51186002EB5C7 /* ConcernAPIService.swift in Sources */,
+				CED88DAA22F33F1F0094D9C1 /* ConcernRow.swift in Sources */,
 				CE94638822E5110D002EB5C7 /* AppDependencies.swift in Sources */,
-				CE94638522E51023002EB5C7 /* MainViewModel.swift in Sources */,
 				CE94637B22E50CF7002EB5C7 /* Concern.swift in Sources */,
 				CE94634B22E50C5A002EB5C7 /* AppDelegate.swift in Sources */,
 				CE94634D22E50C5A002EB5C7 /* SceneDelegate.swift in Sources */,
-				CEECB6BB22EA42FF00D598E3 /* ConcernDetailView.swift in Sources */,
 				CE94638222E50F54002EB5C7 /* TimerService.swift in Sources */,
 				CE94637F22E50F2C002EB5C7 /* Utilities.swift in Sources */,
 				CE94634F22E50C5A002EB5C7 /* MainView.swift in Sources */,
+				CED88DA622F33D6D0094D9C1 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

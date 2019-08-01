@@ -10,130 +10,70 @@ import SwiftUI
 
 
 struct MainView: View {
-    @ObjectBinding var viewModel: MainViewModel
-    @State private var isPresented = false
-    @State private var search = ""
+    @ObservedObject var viewModel: MainViewModel
+    @State private var text: String = ""
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack{
                 
-                VStack {
-                    VStack(alignment: .leading) {
-                        Text("CURRENT")
-                        Text(viewModel.output.elapsedTime)
-                            .font(Font.system(size: 80, design: .rounded))
-                    }
-                        .padding()
+                VStack(alignment: .leading) {
+                    Text("CURRENT")
+                        .font(.callout)
+                    Text("00:00:00")
+                        .font(.system(size: 64, weight: .heavy, design: .default))
                     
-                    VStack(alignment: .leading) {
-                        Text("TODAY")
-                            .font(.caption)
-                        Text("00:00:00")
-                            .font(.largeTitle)
-                    }
-                    .foregroundColor(.gray)
+                    Text("TODAY")
+                        .font(.caption)
+                    Text("00:00:00")
+                        .font(.largeTitle)
                     
-                    VStack(alignment: .leading) {
-                        Text("MONTH")
-                            .font(.caption)
-                        Text("00:00:00")
-                            .font(.largeTitle)
-                    }
-                        .foregroundColor(.gray)
-                    
+                    Text("MONTH")
+                        .font(.caption)
+                    Text("00:00:00")
+                        .font(.largeTitle)
                 }
-                
+                .padding([.bottom], 64)
                 
                 HStack {
-                    
-                    TextField("Case reference / parties", text: $search)
-                        .textFieldStyle(.roundedBorder)
-                        .font(.title)
-                    
-                    Button(action: {
-                        self.viewModel.input.isTimerRunning.toggle() })
-                    {
-                        StatefulButtonUI(isTimerRunning: viewModel.output.isTimerRunning, isButtonDisabled: viewModel.output.isTimerButtonDisabled)?.view
+                    TextField("Case reference or parties", text: $text)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    Button(action: { }) {
+                        Image(systemName:"play")
+                            .font(.largeTitle)
                     }
-                    .font(.largeTitle)
-                        .disabled(viewModel.output.isTimerButtonDisabled)
-                    
                 }
-                .padding(32)
-                
                 
                 List {
-                    ForEach(0..<viewModel.output.concerns.count) { index in
-                        //                        PresentationLink(destination: ConcernDetailView(concern: self.$viewModel.output.concerns[index])) {
-                        
-                        HStack {
-                            Text(Utilities.formattedStringFrom(date: self.viewModel.output.concerns[index].date))
-                            Text(self.viewModel.output.concerns[index].reference)
-                                .padding([.leading], 16)
-                            Text(self.viewModel.output.concerns[index].parties)
-                            Spacer()
-                            Text(Utilities.formattedStringFrom(time: self.viewModel.output.concerns[index].time))
-                        }
-                            // add a touch target to enable row selection?
-                            .font(.subheadline)
-                        
-                        //                        }
-                    }
+                    Text("Item")
                 }
-                    .hidden()
-                .sheet(isPresented: $isPresented, content: { Text("I'm presented") })
+                .frame(height: 200, alignment: .bottom)
+                .hidden()
+            }
+            .padding()
                 
-            }
+            .navigationBarItems(leading:
+                Image(systemName: "person.fill"),
+                                trailing:
+                Image(systemName: "tray.and.arrow.up")
+            )
+                .font(.title)
         }
-        
         
     }
 }
 
 
-extension MainView {
-    private enum StatefulButtonUI {
-        case start, stop, disabled
-        
-        private var colour: Color {
-            switch self {
-            case .start: return .green
-            case .stop: return .red
-            case .disabled: return .gray
-            }
-        }
-        
-        private var image: Image {
-            switch self {
-            case .start, .disabled: return Image(systemName: "play")
-            case .stop: return Image(systemName: "stop")
-            }
-        }
-        
-        var view: some View {
-            return image.foregroundColor(colour)
-        }
-        
-        init?(isTimerRunning: Bool, isButtonDisabled: Bool) {
-            if isButtonDisabled {
-                self = .disabled
-            } else {
-                self = isTimerRunning ? .stop : .start
-            }
-        }
-    }
-}
 
 
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
-    static let viewModel = MainViewModel(dependencies: AppDependencies())
+    static let timerService = TimerService()
+    static let apiService = ConcernAPIService()
+    static let viewModel = MainViewModel(timerService: timerService, apiService: apiService)
     
     static var previews: some View {
-        NavigationView {
-            MainView(viewModel: viewModel)
-        }
+        MainView(viewModel: viewModel)
     }
 }
 #endif
