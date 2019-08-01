@@ -11,74 +11,86 @@ import SwiftUI
 
 struct MainView: View {
     @ObjectBinding var viewModel: MainViewModel
-    @State private var showingDetail = false
+    @State private var isPresented = false
+    @State private var search = ""
     
     var body: some View {
         NavigationView {
             VStack {
                 
-                HStack {
-                    TextField("Concern details", text: $viewModel.input.concernSearchString)
-                        .disabled(viewModel.output.isConcernSearchFieldDisabled)
-                        .padding(.leading, 16)
+                VStack {
+                    VStack(alignment: .leading) {
+                        Text("CURRENT")
+                        Text(viewModel.output.elapsedTime)
+                            .font(Font.system(size: 80, design: .rounded))
+                    }
+                        .padding()
                     
-                    Text(viewModel.output.elapsedTime)
+                    VStack(alignment: .leading) {
+                        Text("TODAY")
+                            .font(.caption)
+                        Text("00:00:00")
+                            .font(.largeTitle)
+                    }
+                    .foregroundColor(.gray)
+                    
+                    VStack(alignment: .leading) {
+                        Text("MONTH")
+                            .font(.caption)
+                        Text("00:00:00")
+                            .font(.largeTitle)
+                    }
+                        .foregroundColor(.gray)
+                    
+                }
+                
+                
+                HStack {
+                    
+                    TextField("Case reference / parties", text: $search)
+                        .textFieldStyle(.roundedBorder)
+                        .font(.title)
+                    
                     Button(action: {
                         self.viewModel.input.isTimerRunning.toggle() })
                     {
                         StatefulButtonUI(isTimerRunning: viewModel.output.isTimerRunning, isButtonDisabled: viewModel.output.isTimerButtonDisabled)?.view
                     }
-                    .disabled(viewModel.output.isTimerButtonDisabled)
-                        .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 16))
+                    .font(.largeTitle)
+                        .disabled(viewModel.output.isTimerButtonDisabled)
+                    
                 }
-                .font(.largeTitle)
-                    .padding(.vertical, 32)
-                
+                .padding(32)
                 
                 
                 List {
                     ForEach(0..<viewModel.output.concerns.count) { index in
-                        PresentationLink(destination: ConcernDetailView(concern: self.$viewModel.output.concerns[index])) {
-                            
-                            HStack {
-                                Text(Utilities.formattedStringFrom(date: self.viewModel.output.concerns[index].date))
-                                Text(self.viewModel.output.concerns[index].reference)
-                                    .padding([.leading], 16)
-                                Text(self.viewModel.output.concerns[index].parties)
-                                Spacer()
-                                Text(Utilities.formattedStringFrom(time: self.viewModel.output.concerns[index].time))
-                            }
-                            .font(.subheadline)
-                            
+                        //                        PresentationLink(destination: ConcernDetailView(concern: self.$viewModel.output.concerns[index])) {
+                        
+                        HStack {
+                            Text(Utilities.formattedStringFrom(date: self.viewModel.output.concerns[index].date))
+                            Text(self.viewModel.output.concerns[index].reference)
+                                .padding([.leading], 16)
+                            Text(self.viewModel.output.concerns[index].parties)
+                            Spacer()
+                            Text(Utilities.formattedStringFrom(time: self.viewModel.output.concerns[index].time))
                         }
+                            // add a touch target to enable row selection?
+                            .font(.subheadline)
+                        
+                        //                        }
                     }
                 }
+                    .hidden()
+                .sheet(isPresented: $isPresented, content: { Text("I'm presented") })
                 
-                HStack {
-                    Text("Total time for June")
-                    Spacer()
-                    Text("00:00:00")
-                        .fontWeight(.bold)
-                }
-                .padding()
-                    .font(.callout)
             }
         }
-        .navigationBarTitle("PICeTimer")
+        
         
     }
 }
 
-
-#if DEBUG
-struct ContentView_Previews: PreviewProvider {
-    static let viewModel = MainViewModel(dependencies: AppDependencies())
-    
-    static var previews: some View {
-        MainView(viewModel: viewModel)
-    }
-}
-#endif
 
 extension MainView {
     private enum StatefulButtonUI {
@@ -112,3 +124,16 @@ extension MainView {
         }
     }
 }
+
+
+#if DEBUG
+struct ContentView_Previews: PreviewProvider {
+    static let viewModel = MainViewModel(dependencies: AppDependencies())
+    
+    static var previews: some View {
+        NavigationView {
+            MainView(viewModel: viewModel)
+        }
+    }
+}
+#endif
