@@ -20,7 +20,8 @@ struct MainView: View {
                 VStack(alignment: .leading) {
                     Text("CURRENT")
                         .font(.callout)
-                    Text("00:00:00")
+//                    Text("00:00:00")
+                    Text(viewModel.output.time)
                         .font(.system(size: 64, weight: .heavy, design: .default))
                     
                     Text("TODAY")
@@ -38,7 +39,7 @@ struct MainView: View {
                 HStack {
                     TextField("Case reference or parties", text: $text)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Button(action: { }) {
+                    Button(action: { self.viewModel.input.isTimerRunning.toggle() }) {
                         Image(systemName:"play")
                             .font(.largeTitle)
                     }

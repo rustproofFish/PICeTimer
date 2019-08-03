@@ -10,40 +10,33 @@ import Foundation
 import Combine
 
 final class TimerService {
-    private var timer: Cancellable?
     private var elapsedTime = TimeInterval()
     private var cancellables = [Cancellable]()
     
-    let elapsedTimeSubject = PassthroughSubject<TimeInterval, Never>()
+    let tick = PassthroughSubject<Date, Never>()
+    
     
     func start() {
-        print("Start called")
-        if timer == nil {
+        if cancellables.isEmpty {
             let timerPublisher = Timer.publish(every: 1.0, tolerance: nil, on: .current, in: .common, options: nil)
             
-            let elapsedTimePublisher = timerPublisher
-                .scan(0, { (value1, value2) in value1 + 1})
-                .subscribe(elapsedTimeSubject) // emitt elapsed seconds
+            let timerSubjectStream = timerPublisher
+                .subscribe(tick)
             
-            timer = timerPublisher
+            let timerConnectStream = timerPublisher
                 .connect()
             
-            cancellables += [timer!, elapsedTimePublisher]
-        
+            cancellables += [timerSubjectStream, timerConnectStream]
         }
     }
     
     func stop() {
-        print("Stop called")
-        if cancellables.count > 2 {
-            assertionFailure("Multi-thread activity detected - more timers active than expected /(#file)")
+        if cancellables.count > 2 { // threading protection - may be being ultra-cautious here!
+            assertionFailure("Multi-thread activity detected - more Timer instances active than expected /(#file)")
         }
-        timer?.cancel()
-        #warning("If the case is new, reset the timer otherwise increment")
-        #warning("Think actually the timer should just emit 'ticks' and not worry about elapsed time, etc")
-        // MARK:- When timer ends, actual time on case should be derived from differences in dates to be accurate
-        // MARK:- THis class is just driving the UI really...
-        timer = nil
+        for cancellable in cancellables {
+            cancellable.cancel()
+        }
         cancellables.removeAll()
     }
 }

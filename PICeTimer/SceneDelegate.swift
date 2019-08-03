@@ -18,11 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Set up dependencies
         let dependencies = AppDependencies()
         // inject into the view model using protocol composition (non-View types can't use @EnvironmentObject?)
-        
+        let viewModel = MainViewModel(timerService: TimerService(), apiService: ConcernAPIService())
 
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: MainView())
+            window.rootViewController = UIHostingController(rootView: MainView(viewModel: viewModel))
             
             self.window = window
             window.makeKeyAndVisible()

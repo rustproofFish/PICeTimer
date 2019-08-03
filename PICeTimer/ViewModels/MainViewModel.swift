@@ -34,18 +34,19 @@ final class MainViewModel: UnidirectionalDataType, ObservableObject {
     // MARK:- Properties
     private let timerService: TimerService
     private let apiService: ConcernAPIService
+    private var elapsedTime: TimeInterval
     
     // MARK:- Protocol conformance
     /// ObservableObject
     let objectWillChange = PassthroughSubject<Void, Never>()
     
     /// UnidirectionalDataType
-    struct Input {
+    class Input {
         @Published var isTimerRunning = false
     }
     
     struct Output {
-        var time: String = ""
+        var time: String = "00:00:00"
     }
     
     var input: Input
@@ -60,9 +61,13 @@ final class MainViewModel: UnidirectionalDataType, ObservableObject {
                 if state { self.timerService.start() } else { self.timerService.stop() }
         }
         
-        let elapsedTimeStream = timerService.elapsedTimeSubject
-            .map { Utilities.formattedStringFrom(time: $0) }
-            .assign(to: \.output.time, on: self)
+
+        let elapsedTimeStream = timerService.tick
+            .map { date in
+                self.elapsedTime += 1
+                return Utilities.formattedStringFrom(time: self.elapsedTime)
+        }
+        .assign(to: \.output.time, on: self)
         
         cancellables += [timerToggleStream, elapsedTimeStream]
     }
@@ -72,6 +77,7 @@ final class MainViewModel: UnidirectionalDataType, ObservableObject {
     init(timerService: TimerService, apiService: ConcernAPIService) {
         self.timerService = timerService
         self.apiService = apiService
+        self.elapsedTime = 0.0
         
         input = Input()
         output = Output()
